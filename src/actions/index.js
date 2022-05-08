@@ -5,10 +5,10 @@ export const addAuthor = author => {
   };
 };
 
-export const removeAuthor = id => {
+export const removeAuthor = author => {
   return {
     type: 'REMOVE_AUTHOR',
-    id
+    author
   };
 };
 
@@ -19,9 +19,9 @@ export const addBook = book => {
   };
 };
 
-export const removeBook = id => {
+export const removeBook = book => {
   return {
     type: 'REMOVE_BOOK',
-    id
+    book
   };
 };

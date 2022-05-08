@@ -17,8 +17,15 @@ function booksReducer(state = [], action) {
       return [...state, action.book];
 
     case "REMOVE_BOOK":
-      idx = state.findIndex(book => book.id  === action.id)
+      idx = state.findIndex(book => book.id  === action.book.id)
       return [...state.slice(0, idx), ...state.slice(idx + 1)];
+
+    case "REMOVE_AUTHOR":
+      let authorsName = action.author.authorName;
+      let newState = state.filter((book) => book.authorName !== authorsName);
+      return newState
+
+
 
     default:
       return state;
@@ -32,7 +39,7 @@ function authorsReducer(state = [], action) {
       return [...state, action.author];
 
     case "REMOVE_AUTHOR":
-      idx = state.findIndex(author => author.id  === action.id)
+      idx = state.findIndex(author => author.id  === action.author.id)
       return [...state.slice(0, idx), ...state.slice(idx + 1)];
 
       case "ADD_BOOK":
@@ -44,7 +51,6 @@ function authorsReducer(state = [], action) {
         } else {
           return [...state, { authorName: action.book.authorName, id: uuid() }];
         }
-
 
 
     default:
